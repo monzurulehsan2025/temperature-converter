@@ -1,0 +1,5 @@
+{
+  "name": "Temperature Converter",
+  "description": "A simple and elegant web application to convert temperatures between Celsius and Fahrenheit in real-time.",
+  "requestFramePermissions": []
+}
