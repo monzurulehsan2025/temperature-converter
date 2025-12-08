@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface TemperatureInputProps {
@@ -24,7 +23,7 @@ const TemperatureInput: React.FC<TemperatureInputProps> = ({
     <div className="relative">
       <label
         htmlFor={label}
-        className="block text-sm font-medium text-slate-400 mb-2"
+        className="block text-sm font-medium text-green-300 mb-2"
       >
         {label}
       </label>
@@ -36,11 +35,11 @@ const TemperatureInput: React.FC<TemperatureInputProps> = ({
           value={value}
           onChange={handleChange}
           placeholder="0"
-          className="w-full bg-slate-700/50 border border-slate-600 rounded-lg py-3 pl-4 pr-12 text-white text-xl placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
+          className="w-full bg-green-800/40 border border-green-700 rounded-lg py-3 pl-4 pr-12 text-white text-xl placeholder-green-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
           autoComplete="off"
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-          <span className="text-slate-400 text-xl">{unit}</span>
+          <span className="text-green-400 text-xl">{unit}</span>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import TemperatureInput from './components/TemperatureInput';
 
@@ -37,15 +36,15 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-slate-900 font-sans">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-green-950 font-sans">
       <div className="w-full max-w-md mx-auto">
-        <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl shadow-2xl shadow-cyan-500/10 overflow-hidden">
+        <div className="bg-green-900/60 backdrop-blur-sm border border-green-800 rounded-2xl shadow-2xl shadow-green-900/50 overflow-hidden">
           <div className="p-8">
             <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-cyan-400">
+              <h1 className="text-4xl font-bold text-emerald-400">
                 Temperature Converter
               </h1>
-              <p className="text-slate-400 mt-2">
+              <p className="text-green-200/70 mt-2">
                 Convert temperatures on the fly.
               </p>
             </div>
@@ -59,7 +58,7 @@ const App: React.FC = () => {
               <div className="flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-slate-500"
+                  className="h-8 w-8 text-green-700/80"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -87,7 +86,7 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-        <footer className="text-center mt-8 text-slate-500 text-sm">
+        <footer className="text-center mt-8 text-green-800 text-sm">
           <p>
             Built with React, TypeScript, and Tailwind CSS.
           </p>
