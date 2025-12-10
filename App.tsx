@@ -4,19 +4,28 @@ import TemperatureInput from './components/TemperatureInput';
 const App: React.FC = () => {
   const [celsius, setCelsius] = useState<string>('');
   const [fahrenheit, setFahrenheit] = useState<string>('');
+  const [kelvin, setKelvin] = useState<string>('');
+
+  const formatTemperature = (value: number): string => {
+    return value.toFixed(2).replace(/\.00$/, '');
+  };
 
   const handleCelsiusChange = useCallback((value: string) => {
     setCelsius(value);
     if (value === '') {
       setFahrenheit('');
+      setKelvin('');
       return;
     }
     const c = parseFloat(value);
     if (!isNaN(c)) {
       const f = (c * 9) / 5 + 32;
-      setFahrenheit(f.toFixed(2).replace(/\.00$/, ''));
+      const k = c + 273.15;
+      setFahrenheit(formatTemperature(f));
+      setKelvin(formatTemperature(k));
     } else {
       setFahrenheit('');
+      setKelvin('');
     }
   }, []);
 
@@ -24,14 +33,37 @@ const App: React.FC = () => {
     setFahrenheit(value);
     if (value === '') {
       setCelsius('');
+      setKelvin('');
       return;
     }
     const f = parseFloat(value);
     if (!isNaN(f)) {
       const c = ((f - 32) * 5) / 9;
-      setCelsius(c.toFixed(2).replace(/\.00$/, ''));
+      const k = c + 273.15;
+      setCelsius(formatTemperature(c));
+      setKelvin(formatTemperature(k));
     } else {
       setCelsius('');
+      setKelvin('');
+    }
+  }, []);
+
+  const handleKelvinChange = useCallback((value: string) => {
+    setKelvin(value);
+    if (value === '') {
+      setCelsius('');
+      setFahrenheit('');
+      return;
+    }
+    const k = parseFloat(value);
+    if (!isNaN(k)) {
+      const c = k - 273.15;
+      const f = (c * 9) / 5 + 32;
+      setCelsius(formatTemperature(c));
+      setFahrenheit(formatTemperature(f));
+    } else {
+      setCelsius('');
+      setFahrenheit('');
     }
   }, []);
 
@@ -55,10 +87,11 @@ const App: React.FC = () => {
                 value={celsius}
                 onChange={handleCelsiusChange}
               />
+              
               <div className="flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-green-700/80"
+                  className="h-6 w-6 text-green-700/60"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -67,21 +100,40 @@ const App: React.FC = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M8 7h.01M12 7h.01M16 7h.01M9 17h6"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    transform="rotate(90 12 12)"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
                   />
                 </svg>
               </div>
+
               <TemperatureInput
                 label="Fahrenheit"
                 unit="°F"
                 value={fahrenheit}
                 onChange={handleFahrenheitChange}
+              />
+
+              <div className="flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 text-green-700/60"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
+                </svg>
+              </div>
+
+              <TemperatureInput
+                label="Kelvin"
+                unit="K"
+                value={kelvin}
+                onChange={handleKelvinChange}
               />
             </div>
           </div>
